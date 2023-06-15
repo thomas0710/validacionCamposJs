@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importar estilos personalizados -->
+    <link rel="stylesheet" href="assets/css/styles.css">
     <title>Validador de envío de correo</title>
 </head>
 <body>
@@ -14,7 +17,7 @@
     </header>
 
     <main class="main">
-
+        <h2>Validador de Email</h2>
         <form action="" class="form">
             <div class="input">
                 <label for="email">Correo:</label>
@@ -31,6 +34,10 @@
             <div class="input">
                 <label for="message">Mensaje:</label>
                 <textarea name="message" id="message"></textarea>
+            </div>
+            <div class="input">
+                <button type="submit" class="btn disable" disabled>Enviar</button>
+                <button type="reset" class="clear btn">Borrar</button>
             </div>
         </form>
 
