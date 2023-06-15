@@ -43,10 +43,6 @@ body
     align-items: center;
     background-color: var(--color-main);
     border-radius: .5rem;
-    -webkit-border-radius: .5rem;
-    -moz-border-radius: .5rem;
-    -ms-border-radius: .5rem;
-    -o-border-radius: .5rem;
 }
 
 h2
