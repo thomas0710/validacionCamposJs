@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Importación de SpenKit -->
+    <link rel="stylesheet" href="assets/css/spinner.css">
+
     <!-- Importar estilos personalizados -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <title>Validador de envío de correo</title>
@@ -18,7 +21,7 @@
 
     <main class="main">
         <h2>Validador de Email</h2>
-        <form action="" class="form">
+        <form action="" id="form" class="form" id="form">
             <div class="input">
                 <label for="email">Correo:</label>
                 <input type="email" name="email" id="email">
@@ -37,14 +40,24 @@
             </div>
             <div class="input">
                 <button type="submit" class="btn disable" id="submit" disabled>Enviar</button>
-                <button type="reset" class="clear btn">Borrar</button>
+                <button type="reset" class="clear btn" id="reset">Borrar</button>
             </div>
         </form>
-
+        
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
     </main>
 
     <footer class="footer">
-
     </footer>
     <!-- Importado Script personalizado -->
     <script src="assets/js/app.js"></script>

@@ -2,23 +2,22 @@
 document.addEventListener('DOMContentLoaded', () => 
 {
     // Creacion de variables...
-    const form = document.querySelector('.form');
+    const form = document.querySelector('#form');
     const email = document.querySelector('#email');
     const copy = document.querySelector('#copy');
     const subject = document.querySelector('#subject');
     const message = document.querySelector('#message');
     const send = document.querySelector('#submit');
+    const reset = document.querySelector('#reset')
 
     // Crear obejto email
-    const emailDate = { email: '', copy: '', subject: '', message: ''};
+    const emailData = { email: '', copy: '', subject: '', message: ''};
 
     // Se escucha el evento blur los input, y se ejecuta la funcion de validación...
     email.addEventListener('blur', validate);
     copy.addEventListener('blur', validate);
     subject.addEventListener('blur', validate);
     message.addEventListener('blur', validate);
-
-    //console.log(form, email, copy, subject, message);
 
     // Funcion que valida que el campo no este vacio y elimina los espacios en blanco... 
     function validate(evt)
@@ -28,9 +27,13 @@ document.addEventListener('DOMContentLoaded', () =>
         
         // Valida que el input sea diferente de vacio y quita los espacios en blanco (.trim()) 
         if(evt.target.value.trim() === '')
-        {   
+        {
             // Se llama a la función que muestra la alerta y como parametros recibe un mensaje y la refencia del elemnto pra agregar la alerta...
             alertView(`El campo ${input} es requerido`, evt.target.parentElement);
+
+            //Se reinicia el onjeto email antes de hacer las validaciones...
+            emailData[evt.target.name] = '';
+            comprovateInputsEmail();
             return;
         }
 
@@ -38,6 +41,10 @@ document.addEventListener('DOMContentLoaded', () =>
         if(evt.target.id === 'email' && !emailValidate(evt.target.value))
         {
             alertView('El email escrito no es valido...', evt.target.parentElement);
+
+            //Se reinicia el onjeto email antes de hacer las validaciones...
+            emailData[evt.target.name] = '';
+            comprovateInputsEmail();
             return;
         }
 
@@ -45,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () =>
         alertClear(evt.target.parentElement);
 
         // Asignar valores de los campos del objeto del email con los datos de los input...
-        emailDate[evt.target.name] = evt.target.value.trim().toLowerCase();
+        emailData[evt.target.name] = evt.target.value.trim().toLowerCase();
 
+        // Se llama la funcion que valida que los campos estan llenos y son correctos, ademas se llama al final por que se deben haber psasdo las validaciones anteriores...
         comprovateInputsEmail();
         
     }
@@ -82,21 +90,25 @@ document.addEventListener('DOMContentLoaded', () =>
     {
         const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
         const result = regex.test(email);
-        console.log(result);
+        return result;
 
     }
 
     function comprovateInputsEmail()
     {
-        if(Object.values(emailDate).includes(''))
+        // Valida que el Objeto emailData no hay cadenas vacias...
+        if(Object.values(emailData).includes(''))
         {
-            
-        }else
-        {
-            send.classList.remove('disable');
-            send.classList.add('send');
+            send.classList.add('disable');
+            send.classList.remove('send');
+            send.disabled = true;
+            return;
         }
+
+        send.classList.remove('disable');
+        send.classList.add('send');
+        send.disabled = false;
     }
 
-})
+});
 
