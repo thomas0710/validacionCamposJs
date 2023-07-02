@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () =>
     copy.addEventListener('blur', validate);
     subject.addEventListener('blur', validate);
     message.addEventListener('blur', validate);
+    form.addEventListener('submit', sendEmail);
 
     // Funcion que valida que el campo no este vacio y elimina los espacios en blanco... 
     function validate(evt)
@@ -108,6 +109,11 @@ document.addEventListener('DOMContentLoaded', () =>
         send.classList.remove('disable');
         send.classList.add('send');
         send.disabled = false;
+    }
+
+    function sendEmail()
+    {
+        
     }
 
 });
